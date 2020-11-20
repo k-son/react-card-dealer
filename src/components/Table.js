@@ -8,7 +8,8 @@ class Table extends Component {
     super(props);
     this.state = {
       deck_id: '',
-      card_stack: []
+      card_stack: [],
+      remaining: null
     }
     this.dealCard = this.dealCard.bind(this);
   }
@@ -19,8 +20,18 @@ class Table extends Component {
     this.setState({
       deck_id: response.data.deck_id
     });
+  }
 
-    console.log('DID MOUNT', this.state.deck_id);
+  componentDidUpdate() {
+    if (this.state.remaining === 48) {
+      axios.get(`https://deckofcardsapi.com/api/deck/${this.state.deck_id}/shuffle/`).then(response => {
+        this.setState({
+          card_stack: [],
+          remaining: null
+        })
+      });
+    }
+    console.log('DID UPDATE', this.state.remaining);
   }
 
   async dealCard() {
@@ -28,28 +39,26 @@ class Table extends Component {
     const response = await axios.get(url);
     const newCard = response.data.cards[0];
     this.setState({
-      card_stack: [...this.state.card_stack, newCard]
+      card_stack: [...this.state.card_stack, newCard],
+      remaining: response.data.remaining
     });
-    console.log(newCard);
-    console.log(this.state.card_stack);
   }
 
   render () {
     return(
       <div className="Table">
-        <div className="Table-content">
-          <h1>Card Dealer</h1>
-          <button onClick={this.dealCard}>Deal me a card</button>
-          {this.state.card_stack.map(card => {
-            return (
-              <Card 
-              key={card.code}
-              image={card.images.png}
-              alt={`${card.value} ${card.suit}`}
-            />
-            )
-          })}
-        </div>
+        <h1>Card Dealer</h1>
+        <button onClick={this.dealCard}>Deal me a card</button>
+        <p>Cards left in the deck: {this.state.remaining}</p>
+        {this.state.card_stack.map(card => {
+          return (
+            <Card 
+            key={card.code}
+            image={card.images.png}
+            alt={`${card.value} ${card.suit}`}
+          />
+          )
+        })}
       </div>
     );
   }
