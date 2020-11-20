@@ -9,7 +9,7 @@ class Card extends Component {
   render () {
     return(
       <div className="Card">
-        <img src={this.props.rank} alt={this.props.alt} />
+        <img src={this.props.image} alt={this.props.alt} />
       </div>
     );
   }
