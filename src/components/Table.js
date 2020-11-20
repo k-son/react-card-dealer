@@ -10,9 +10,11 @@ class Table extends Component {
   render () {
     return(
       <div className="Table">
-        <h1>React card dealing app</h1>
-        <button>Deal me a card</button>
-        <Card />
+        <div className="Table-content">
+          <h1>React card dealing app</h1>
+          <button>Deal me a card</button>
+          <Card />
+        </div>
       </div>
     );
   }

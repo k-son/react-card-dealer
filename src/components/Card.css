@@ -1,0 +1,8 @@
+.Card img{
+  display: block;
+  height: 30vh;
+  min-height: 200px;
+  width: auto;
+  margin: 0 auto;
+  border: 1px solid #fff;
+}
