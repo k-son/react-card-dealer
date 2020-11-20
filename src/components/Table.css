@@ -6,21 +6,32 @@
 }
 
 .Table h1 {
+  position: relative;
   display: block;
   text-align: center;
+  text-transform: uppercase;
+  color: hsl(70, 100%, 50%);
   margin-bottom: 32px;
 }
 
 .Table button {
   display: block;
   font-size: 16px;
-  background-color: blanchedalmond;
+  font-weight: 600;
+  color: #444;
+  background-color: hsl(41, 100%, 50%);
   padding: 12px 24px;
-  margin: 0 auto 10vh;
-  border: none;
-  border-radius: 3px;
+  margin: 0 auto 32px;
+  border: 2px solid #444;
+  border-radius: 4px;
 }
 
 .Table button:hover {
   cursor: pointer;
+}
+
+.Table p {
+  text-align: center;
+  margin: 0 0 10vh;
+  color: hsl(70, 100%, 50%);
 }

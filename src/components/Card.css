@@ -1,15 +1,14 @@
 .Card {
   position: relative;
+  margin: 0 auto;
 }
 
 .Card img {
   display: block;
   position: absolute;
-  left: 50%;
   top: 0;
-  transform: translateX(-50%);
-  height: 30vh;
-  min-height: 100px;
+  left: 50%;
+  transform: translateX(-50%) rotate(5deg);
+  height: clamp(150px, 30vh, 300px);
   width: auto;
-  margin: 0 auto;
 }

@@ -1,18 +1,10 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './Card.css';
 
-class Card extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render () {
-    return(
-      <div className="Card">
-        <img src={this.props.image} alt={this.props.alt} />
-      </div>
-    );
-  }
-}
-
-export default Card;
+export const Card = (props) => {
+  return(
+    <div className="Card">
+      <img src={props.image} alt={props.alt} style={{left: props.left + '%', top: props.top + 'px', transform: `translateX(-50%) rotate(${props.rotate}deg)`}}/>
+    </div>
+  );
+};
